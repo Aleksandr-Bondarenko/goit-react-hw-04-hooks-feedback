@@ -3,6 +3,9 @@
 # .husky
 .*/
 
+# eslintcache
+.eslintcache
+
 # dependencies
 /node_modules
 /.pnp
