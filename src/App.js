@@ -20,41 +20,21 @@ class App extends Component {
 
   message = "No feedback given";
 
-  options = [{ name: "Good" }, { name: "Neutral" }, { name: "Bad" }];
+  options = ["good", "neutral", "bad"];
 
   onLeaveFeedback = (e) => {
-    // const keys = Object.keys(this.state);
-    // const index = arr.indexOf(e.target.innerText.toLowerCase());
-    // console.log(index);
-
-    // for (const key of keys) {
-
-    // }
-
-    switch (e.target.innerText.toLowerCase()) {
-      case "good":
-        this.setState((prevState) => ({ good: prevState.good + 1 }));
-        break;
-
-      case "neutral":
-        this.setState((prevState) => ({ neutral: prevState.neutral + 1 }));
-        break;
-
-      case "bad":
-        this.setState((prevState) => ({ bad: prevState.bad + 1 }));
-        break;
-
-      default:
-        console.log("Invalid subscription type");
-    }
+    // console.log(e.currentTarget.textContent);
+    this.options.map((option) => {
+      return option === e.target.textContent
+        ? this.setState((prevState) => ({ [option]: prevState[option] + 1 }))
+        : this.setState((prevState) => ({ [option]: prevState[option] }));
+    });
   };
 
   countTotalFeedback = () => {
-    let totalValue = null;
-    for (const key in this.state) {
-      totalValue += this.state[key];
-    }
-    return totalValue;
+    return Object.values(this.state).reduce((acc, num) => {
+      return acc + num;
+    }, 0);
   };
 
   countPositiveFeedbackPercentage = () => {
@@ -71,6 +51,7 @@ class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+
     return (
       <div className="AppContainer">
         <Section title={this.title} children>
