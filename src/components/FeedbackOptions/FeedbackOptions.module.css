@@ -5,7 +5,7 @@
 .btn {
   padding: 10px;
   border: 1px solid #6113b97c;
-  color: #cc0fa3;
+  color: #ffffffc2;
   border-radius: 20px;
   background-color: transparent;
   text-align: center;
@@ -15,6 +15,18 @@
   width: 80px;
   transition: box-shadow linear 300ms;
   cursor: pointer;
+}
+
+.btn:nth-child(1) {
+  background-color: rgba(25, 214, 25, 0.562);
+}
+
+.btn:nth-child(2) {
+  background-color: rgba(255, 255, 0, 0.63);
+}
+
+.btn:nth-child(3) {
+  background-color: rgba(255, 0, 0, 0.637);
 }
 
 .btn:hover,
