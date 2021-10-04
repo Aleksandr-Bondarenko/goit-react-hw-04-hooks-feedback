@@ -16,19 +16,15 @@ class App extends Component {
     bad: this.props.initialValue,
   };
 
-  title = "Please leave feedback";
-
   message = "No feedback given";
 
   options = ["good", "neutral", "bad"];
 
-  onLeaveFeedback = (e) => {
-    // console.log(e.currentTarget.textContent);
-    this.options.map((option) => {
-      return option === e.target.textContent
-        ? this.setState((prevState) => ({ [option]: prevState[option] + 1 }))
-        : this.setState((prevState) => ({ [option]: prevState[option] }));
-    });
+  onLeaveFeedback = (feedback) => {
+    // console.log(feedback);
+    return this.setState((prevState) => ({
+      [feedback]: prevState[feedback] + 1,
+    }));
   };
 
   countTotalFeedback = () => {
@@ -54,7 +50,7 @@ class App extends Component {
 
     return (
       <div className="AppContainer">
-        <Section title={this.title} children>
+        <Section title="Please leave feedback">
           <FeedbackOptions
             options={this.options}
             onLeaveFeedback={this.onLeaveFeedback}
